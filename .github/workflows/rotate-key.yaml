@@ -12,5 +12,6 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Process Secret
-        MESSAGE: ${{ github.event.client_payload.secretName }}
+        env:
+          MESSAGE: ${{ github.event.client_payload.secretName }}
         run: echo $MESSAGE
