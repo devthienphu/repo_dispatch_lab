@@ -1,0 +1,16 @@
+name: Handle KeyVault Secret Expiry
+
+on:
+  repository_dispatch:
+    types: [keyvault_secret_expired]
+
+jobs:
+  handle_secret_expiry:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Process Secret
+        MESSAGE: ${{ github.event.client_payload.secretName }}
+        run: echo $MESSAGE
